@@ -22,6 +22,23 @@ async def lifespan(app:FastAPI):
     yield
     print("Application shutdown")
     
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    title="Todo Application",
+    description="This is a section for description",
+    summary="This is a section for summery ",
+    version="0.0.1",
+    terms_of_service="http://example.com/terms/",
+    contact={
+        "name": "Mahsa Alizade",
+        "url": "http://x-force.example.com/contact/",
+        "email": "mahsa.alizade8271@gmail.com",
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
+    lifespan=lifespan,
+    openapi_tags=tags_metadata
+            )
 
-app.include_router(tasks_routes)
+app.include_router(tasks_routes,prefix="/api/v1")

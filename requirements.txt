@@ -1,2 +1,2 @@
-fastapi[all]
-alembic
+fastapi[all]>0.115,<0.116
+alembic==1.18.1
